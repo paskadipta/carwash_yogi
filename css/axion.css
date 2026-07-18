@@ -1,0 +1,522 @@
+/* =========================================
+   GLOBAL STYLES KHUSUS MENGAPA AXION
+   ========================================= */
+
+.mengapa-section {
+    padding: 10rem 5% 6rem; /* Padding atas besar untuk menghindari navbar */
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+}
+
+.mengapa-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   BAGIAN HEADER (Logo & Judul)
+   ========================================= */
+.mengapa-header {
+    display: flex;
+    justify-content: space-between; /* Logo di kiri, Judul di kanan */
+    align-items: center;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis pemisah bawah */
+    position: relative;
+}
+
+.mh-logo img {
+    width: 250px;
+    filter: drop-shadow(0 0 15px rgba(255, 183, 3, 0.2));
+}
+
+.mh-title {
+    text-align: right;
+    position: relative;
+}
+
+/* Badge EST. 2026 */
+.est-badge {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    font-size: 1rem;
+    color: #a1a1aa;
+    letter-spacing: 3px;
+    display: flex;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.est-badge .stripes {
+    color: var(--accent-yellow);
+    font-weight: 900;
+    font-style: italic;
+}
+
+.mh-title h2 {
+    font-size: 2.5rem;
+    color: var(--text-light);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.mh-title h1 {
+    font-size: 4rem;
+    color: var(--accent-yellow); /* Warna kuning */
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   GRID LAYOUT (2 KOLOM)
+   ========================================= */
+.mengapa-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Kolom kiri lebih lebar dari kanan */
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* =========================================
+   KOLOM KIRI (Sleek Minimalist Accordion)
+   ========================================= */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    /* Gap dihapus, karena jarak antar elemen akan diatur oleh padding dan border */
+}
+
+.reason-item {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Garis batas bawah */
+    padding: 1.5rem 0; /* Jarak atas bawah yang luas agar terlihat rapi */
+    transition: border-color 0.3s ease;
+}
+
+/* Menghilangkan garis bawah pada item terakhir */
+.reason-item:last-child {
+    border-bottom: none;
+}
+
+/* Bagian Header yang bisa diklik */
+.reason-header {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Jarak antara ikon kecil dan teks */
+    cursor: pointer;
+}
+
+.reason-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-light); /* Warna default */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+
+.reason-header h3 {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    font-weight: 600;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* Ikon Toggle (Chevron) mentok kanan */
+.toggle-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto; /* INI KUNCINYA: Mendorong panah ke ujung kanan */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+/* Konten / Deskripsi (Slide Down Effect) */
+.reason-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reason-inner {
+    overflow: hidden; 
+    /* Padding kiri 39px (Ikon 24px + Gap 15px) agar teks deskripsi rata dengan teks judul */
+    padding: 0 0 0 39px; 
+}
+
+.reason-inner p {
+    font-size: 1.05rem;
+    color: #a1a1aa;
+    line-height: 1.6;
+    padding-top: 1rem; /* Jarak antara teks deskripsi dan judul saat terbuka */
+    margin: 0;
+}
+
+/* --- STATE AKTIF SAAT ACCORDION DIBUKA --- */
+.reason-item.active {
+    border-bottom: 2px solid var(--accent-yellow); /* Garis bawah berubah kuning (seperti di referensi yang menjadi biru) */
+}
+
+/* Saat aktif: Ikon, Teks Judul, dan Panah berubah kuning */
+.reason-item.active .reason-header h3,
+.reason-item.active .reason-icon,
+.reason-item.active .toggle-icon {
+    color: var(--accent-yellow);
+}
+
+.reason-item.active .reason-content {
+    grid-template-rows: 1fr; /* Teks meluncur turun */
+}
+
+.reason-item.active .toggle-icon {
+    transform: rotate(180deg); /* Panah putar ke atas */
+}
+
+/* =========================================
+   KOLOM KANAN (Highlight Card)
+   ========================================= */
+.highlight-card {
+    background: rgba(255, 183, 3, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 2px solid var(--accent-yellow); /* Border keliling berwarna emas */
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: sticky;
+    top: 120px; /* Card akan tetap menempel di layar saat di-scroll ke bawah */
+    box-shadow: 0 10px 40px rgba(255, 183, 3, 0.1);
+}
+
+.hc-header {
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+/* Font latin (Cursive) untuk kata "Keuntungan" */
+.hc-header h3 {
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    font-size: 3.5rem;
+    color: #ffffff;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    transform: rotate(-3deg); /* Sedikit dimiringkan agar terlihat dinamis */
+}
+
+.hc-header h4 {
+    font-size: 1.6rem;
+    color: var(--accent-yellow);
+    letter-spacing: 1.5px;
+    font-weight: 800;
+}
+
+/* List Item di dalam Highlight Card */
+.hc-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    border-top: 1px dashed rgba(255, 183, 3, 0.4);
+    padding-top: 1.5rem;
+}
+
+.hc-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #e4e4e7;
+    line-height: 1.4;
+}
+
+.hc-icon {
+    font-size: 1.5rem;
+    background: rgba(255, 183, 3, 0.15);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 183, 3, 0.4);
+}
+
+.hc-list li small {
+    font-size: 0.8rem;
+    color: #a1a1aa;
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+}
+
+/* =========================================
+   SECTION 2: SISTEM KERJA SAMA
+   ========================================= */
+.sk-section {
+    padding: 2rem 5% 8rem;
+    position: relative;
+    z-index: 10;
+}
+
+.sk-container {
+    max-width: 1000px; /* Lebar container lebih kecil agar terpusat */
+    margin: 0 auto;
+}
+
+.sk-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.sk-header h2 {
+    font-size: 3.5rem;
+    color: var(--text-light);
+    letter-spacing: 2px;
+}
+
+/* Layout List Kartu */
+.sk-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Kartu Utama */
+.sk-card {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 183, 3, 0.4); /* Border kuning/gold tipis */
+    border-radius: 20px;
+    padding: 1.2rem 2rem 1.2rem 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sk-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 25px rgba(255, 183, 3, 0.1);
+}
+
+/* Bagian Kiri: Hexagon & Angka */
+.sk-visual {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    flex-shrink: 0;
+}
+
+/* Ikon Hexagon */
+.sk-hex {
+    width: 80px;
+    height: 80px;
+    background: var(--bg-dark);
+    color: var(--accent-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    border: 2px solid var(--accent-yellow); 
+    box-shadow: 0 0 15px rgba(255, 183, 3, 0.15);
+    z-index: 2; /* Menumpuk di atas angka */
+}
+
+/* Kotak Angka (Gold) */
+.sk-num {
+    background: var(--accent-yellow);
+    color: var(--bg-dark);
+    font-size: 1.8rem;
+    font-weight: 900;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px 0 40px; /* Padding kiri besar agar tidak tertutup hexagon */
+    margin-left: -25px; /* Trik menempelkan/overlap ke bawah hexagon */
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    z-index: 1;
+}
+
+/* Bagian Kanan: Teks Konten */
+.sk-text {
+    flex-grow: 1;
+}
+
+.sk-text h3 {
+    color: var(--accent-yellow);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.sk-text p {
+    color: #e4e4e7;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* =========================================
+   SECTION 3: 12 KEUNGGULAN KEMITRAAN
+   ========================================= */
+.keunggulan-section {
+    padding: 2rem 5% 8rem;
+    position: relative;
+    z-index: 10;
+}
+
+.k-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Judul Section Utama */
+.k-main-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.k-main-header h2 {
+    font-size: 2.2rem;
+    color: var(--accent-yellow);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.k-main-header h1 {
+    font-size: 3.5rem;
+    color: var(--text-light);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.k-main-header p {
+    color: #a1a1aa;
+    font-size: 1.15rem;
+}
+
+/* Grid Wrapper: Membagi menjadi Kiri dan Kanan */
+.k-column-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; /* Jarak antara kolom kiri dan kanan */
+}
+
+.k-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Base Item Accordion Khusus Section 3 */
+.k-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.2rem 0;
+    transition: border-color 0.3s ease;
+}
+
+.k-item:last-child {
+    border-bottom: none; /* Hilangkan garis bawah di item paling bawah */
+}
+
+.k-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+/* Kotak Angka (Hexagon) */
+.k-num {
+    width: 30px; /* Lebar yang pas untuk angka 1 sampai 12 */
+    color: var(--text-light);
+    font-weight: 900;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Ikon Utama */
+.k-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+
+/* Judul Accordion */
+.k-header h3 {
+    color: var(--accent-yellow); /* Warna default judul adalah kuning seperti gambar */
+    font-size: 1.15rem;
+    margin: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Panah Toggle di Kanan */
+.k-toggle {
+    width: 24px;
+    height: 24px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto; 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+/* Konten Slide Down */
+.k-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.k-inner {
+    overflow: hidden;
+    /* Lebar padding disesuaikan dengan (lebar k-num 40px + gap 15px + k-icon 24px + gap 15px) */
+    padding-left: 84px; 
+}
+
+.k-inner p {
+    color: #e4e4e7;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding-top: 1rem;
+    margin: 0;
+}
+
+/* --- STATE AKTIF SAAT ACCORDION DIBUKA --- */
+.k-item.active {
+    border-bottom: 2px solid var(--accent-yellow);
+}
+
+.k-item.active .k-content {
+    grid-template-rows: 1fr;
+}
+
+.k-item.active .k-toggle {
+    transform: rotate(180deg);
+    color: var(--accent-yellow);
+}
+
+.k-item.active .k-icon {
+    color: var(--accent-yellow);
+}

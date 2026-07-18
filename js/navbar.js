@@ -22,7 +22,7 @@ function renderNavbar() {
             <ul class="nav-links" id="nav-links">
                 <li><a href="../html/home.html">Beranda</a></li>
                 <li><a href="../html/Mitra.html">Paket Kemitraan</a></li>
-                <li><a href="#mengapa-axion">Mengapa AXION</a></li>
+                <li><a href="../html/AXION.html">Mengapa AXION</a></li>
                 <!-- Tombol Kontak dipindah ke dalam menu saat mode mobile -->
                 <li class="mobile-only"><a href="#kontak" class="btn-primary">Kontak</a></li>
             </ul>

@@ -151,7 +151,39 @@ visiMisiTimeline
     );
 
 // ==========================================
-// 5. ANIMASI SAAT DI-SCROLL (CONTAINER 4 - PROMO CTA)
+// 4. ANIMASI SAAT DI-SCROLL (CONTAINER 4 - MENGAPA MEMILIH)
+// ==========================================
+const reasonsTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".reasons-section",
+        start: "top 80%", // Animasi mulai saat ujung atas container mencapai 80% dari layar
+        toggleActions: "play none none none"
+    }
+});
+
+reasonsTimeline
+    // Animasi Judul
+    .fromTo(".reasons-section .section-title h2", 
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+    )
+    // Animasi Paragraf
+    .fromTo(".reasons-section .section-title p",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+        "-=0.6"
+    )
+    // Animasi 6 Card (muncul bergantian dengan efek stagger)
+    .from(".reason-card", {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15, // Memberikan jeda 0.15 detik antar card
+        ease: "back.out(1.2)"
+    }, "-=0.3");
+
+// ==========================================
+// 5. ANIMASI SAAT DI-SCROLL (CONTAINER 5 - PROMO CTA)
 // ==========================================
 gsap.fromTo(".promo-card", 
     { 
