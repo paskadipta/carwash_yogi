@@ -1,0 +1,330 @@
+/* =========================================
+   NAVBAR COMPONENT (navbar.css)
+   ========================================= */
+
+/* --- Tata Letak Navbar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: fixed; /* Membuat navbar menempel saat di-scroll */
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-yellow);
+}
+
+/* --- Styling Logo Navbar (Gunakan ini setelah logo di-crop) --- */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 45px; /* Tinggal naik-turunkan angka ini untuk mengatur besar logo */
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* --- Elemen & Efek (Dibawa khusus ke Navbar) --- */
+
+/* Efek Kaca (Glassmorphism) */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur); /* Dukungan Safari */
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Teks Aksen */
+.accent-text { 
+    color: var(--accent-yellow); 
+}
+
+/* Tombol Kontak Navbar */
+.btn-primary {
+    background-color: var(--accent-yellow);
+    color: var(--bg-dark);
+    padding: 10px 24px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* =========================================
+   FOOTER COMPONENT (footer.css)
+   ========================================= */
+
+   /* =========================================
+   FOOTER COMPONENT 
+   ========================================= */
+
+.footer-section {
+    /* Menerapkan efek Glassmorphism dari variabel global */
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-top: 1px solid var(--glass-border);
+    
+    /* Padding kiri-kanan diperkecil menjadi 2rem agar lebih menempel ke tepi */
+    padding: 4rem 2rem 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Mengatur wadah utama agar melebar penuh */
+.footer-content {
+    display: grid;
+    grid-template-columns: 3.5fr 2fr 1fr 1.2fr; 
+    gap: 3rem; /* Gap sedikit dirapatkan */
+    max-width: 1200px; /* Hapus batasan 1200px agar konten mengisi ruang kosong */
+    margin: 0 auto 3rem;
+}
+
+/* --- (Sisa styling kolom 1, 2, 3, dan 4 tetap sama seperti sebelumnya) --- */
+.footer-logo {
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+}
+
+.brand-col p {
+    color: #a1a1aa;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    padding-right: 2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.social-box:hover {
+    border-color: var(--accent-yellow);
+    color: var(--accent-yellow);
+    background: rgba(255, 183, 3, 0.05);
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 1.2rem;
+}
+
+.footer-links a {
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-yellow);
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    color: #71717a;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.contact-value {
+    color: #d4d4d8;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.address-text {
+    line-height: 1.7;
+    color: #d4d4d8;
+    font-size: 0.95rem;
+}
+
+/* --- Bagian Bawah: Copyright --- */
+.footer-bottom {
+    max-width: 100%; /* Pastikan bagian bawah juga melebar penuh */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: #71717a;
+}
+
+/* =========================================
+   MOBILE LAYOUT (Target Dimensi 390px)
+   ========================================= */
+
+/* Setelan dasar Hamburger (Sembunyi di Desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001; /* Harus lebih tinggi dari menu agar tetap bisa di-klik */
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background-color: var(--text-light);
+    border-radius: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* --- Media Query Mobile --- */
+@media screen and (max-width: 430px) {
+    .navbar {
+        padding: 1rem 1.5rem; /* Menyesuaikan padding untuk layar 390px */
+    }
+
+    .navbar .logo img {
+        height: 35px; /* Logo sedikit diperkecil agar proporsional */
+    }
+
+    /* Sembunyikan tombol kontak utama di navbar atas */
+    .desktop-btn {
+        display: none;
+    }
+
+    /* Tampilkan hamburger */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Modifikasi Nav-links menjadi Side-drawer */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Sembunyikan di luar layar kanan */
+        width: 75%; /* Mengambil 75% lebar layar (sekitar 290px dari 390px) */
+        height: 100vh;
+        
+        /* Menggunakan style glassmorphism dari variabel global kamu */
+        background: rgba(10, 10, 10, 0.85); 
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border-left: 1px solid var(--glass-border);
+        
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Class yang ditambah via JS saat hamburger diklik */
+    .nav-links.active {
+        right: 0; 
+    }
+
+    .nav-links a {
+        font-size: 1.2rem; /* Ukuran font lebih besar untuk area sentuh di HP */
+    }
+
+    .mobile-only {
+        display: block;
+        margin-top: 1rem;
+    }
+
+    /* Animasi silang (X) pada Hamburger saat aktif */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+        background-color: var(--accent-yellow);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+        background-color: var(--accent-yellow);
+    }
+
+    /* --- Penyesuaian Footer untuk Mobile (max-width: 430px) --- */
+    .footer-content {
+        grid-template-columns: 1fr; /* Memaksa 4 kolom menjadi 1 kolom tumpuk */
+        gap: 2rem;
+        text-align: center; /* Menengahkan semua teks */
+    }
+
+    .brand-col p {
+        padding-right: 0; /* Menghapus padding kanan agar simetris */
+    }
+
+    .social-links {
+        justify-content: center; /* Menengahkan logo sosial media */
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Menumpuk teks copyright ke bawah */
+        gap: 1rem;
+        text-align: center;
+    }
+}

@@ -1,0 +1,496 @@
+/* =========================================
+   PRICING / PAKET KEMITRAAN SECTION (WEB LAYOUT)
+   ========================================= */
+
+.pricing-section {
+    background-color: var(--bg-dark);
+    /* Padding atas diperbesar agar tidak tertutup navbar fixed (100px) */
+    padding: 12rem 5% 8rem;
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 4rem;
+    color: var(--text-light);
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+.section-title p {
+    color: #a1a1aa;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Grid Layout 3 Kolom untuk Web */
+.pricing-grid {
+    display: grid;
+    /* Memaksa 3 kolom berjejer pada layar desktop */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    align-items: stretch; /* Memastikan semua kartu tingginya sama */
+}
+
+/* Styling Dasar Kartu (EFEK GLASSMORPHISM UTAMA) */
+.pricing-card {
+    /* Hapus background hitam pekat, ganti dengan efek blur kaca */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid transparent; /* Ketebalan border ditipiskan untuk efek glass */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+/* --- EFEK KILATAN SILVER (SHINE) --- */
+.pricing-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Standby di luar batas kiri kartu */
+    width: 150px; /* Lebar area kilatan */
+    height: 100%;
+    
+    /* Gradasi transparan -> putih -> transparan */
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.5) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    
+    transform: skewX(-25deg); /* Membuat kilatan agak miring */
+    z-index: 10; /* Muncul di atas semua elemen dalam kartu */
+    pointer-events: none; /* Mencegah kilatan memblokir klik */
+    
+    /* Animasi pergerakan saat di-hover maupun saat dilepas */
+    transition: left 0.7s ease-in-out; 
+}
+
+/* Kursor Masuk -> Kilatan Bergerak Kiri ke Kanan */
+.pricing-card:hover::before {
+    left: 150%; /* Pindah ke luar batas kanan kartu */
+}
+
+/* Kursor Keluar -> Karena hover hilang, transition otomatis mengembalikan left ke -150% (Kanan ke Kiri) */
+
+
+/* Efek angkat (lift) saat hover */
+.pricing-card:hover {
+    transform: translateY(-15px);
+}
+
+/* --- Variasi Warna Spesifik per Kartu (GLASSMORPHISM) --- */
+
+/* Kartu Bronze */
+.card-bronze { 
+    background: rgba(181, 107, 62, 0.08); /* Background Bronze Transparan (8% opacity) */
+    border-color: rgba(181, 107, 62, 0.3); 
+    box-shadow: 0 8px 32px rgba(181, 107, 62, 0.05); /* Glow tipis bawaan */
+}
+.card-bronze:hover { 
+    background: rgba(181, 107, 62, 0.15); /* Lebih terang saat dihover */
+    border-color: rgba(181, 107, 62, 0.8);
+    box-shadow: 0 20px 40px rgba(181, 107, 62, 0.25); 
+}
+.text-bronze { color: #cd7f32; }
+.bg-bronze { background: linear-gradient(90deg, #5c3214 0%, #a46231 25%, #d99058 50%, #a46231 75%, #5c3214 100%); }
+.icon-bronze { color: #cd7f32; }
+
+/* Kartu Silver (Dibuat sedikit menonjol/lebar) */
+.card-silver { 
+    background: rgba(209, 213, 219, 0.08); /* Background Silver Transparan */
+    border-color: rgba(209, 213, 219, 0.3); 
+    transform: scale(1.05); /* Membesarkan kartu tengah sedikit */
+    z-index: 2;
+    box-shadow: 0 8px 32px rgba(209, 213, 219, 0.05);
+}
+.card-silver:hover { 
+    background: rgba(209, 213, 219, 0.15); /* Lebih terang saat dihover */
+    border-color: rgba(209, 213, 219, 0.8);
+    box-shadow: 0 20px 40px rgba(209, 213, 219, 0.25); 
+    transform: scale(1.05) translateY(-15px); /* Tetap besar saat dihover */
+}
+.text-silver { color: #d1d5db; }
+.bg-silver { background: linear-gradient(90deg, #4a4a4a 0%, #8c8c8c 25%, #d9d9d9 50%, #8c8c8c 75%, #4a4a4a 100%); }
+.icon-silver { color: #d1d5db; }
+
+/* Kartu Gold */
+.card-gold { 
+    background: rgba(251, 191, 36, 0.08); /* Background Gold Transparan */
+    border-color: rgba(251, 191, 36, 0.3); 
+    box-shadow: 0 8px 32px rgba(251, 191, 36, 0.05);
+}
+.card-gold:hover { 
+    background: rgba(251, 191, 36, 0.15); /* Lebih terang saat dihover */
+    border-color: rgba(251, 191, 36, 0.8);
+    box-shadow: 0 20px 40px rgba(251, 191, 36, 0.25); 
+}
+.text-gold { color: #fbbf24; }
+.bg-gold { background: linear-gradient(90deg, #7a5212 0%, #b88628 25%, #fadc73 50%, #b88628 75%, #7a5212 100%); }
+.icon-gold { color: #fbbf24; }
+
+
+/* --- Bagian Header Kartu --- */
+.card-header {
+    text-align: center;
+    padding: 3rem 2rem 1.5rem;
+}
+
+.paket-label {
+    font-size: 1.1rem;
+    color: #a1a1aa;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.paket-name {
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* Harga Coret */
+.price-strike {
+    font-size: 1.4rem;
+    color: #71717a;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+}
+
+.price-strike::after {
+    content: '';
+    position: absolute;
+    left: -10%;
+    top: 50%;
+    width: 120%;
+    height: 3px;
+    background-color: #dc2626; /* Merah menyala */
+    transform: rotate(-3deg); 
+}
+
+
+/* --- Box Harga Utama (Pita Metalik) --- */
+.price-box {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.2), 0 4px 15px rgba(0, 0, 0, 0.5); /* Efek timbul/3D */
+}
+
+.price-box h4 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+}
+
+
+/* --- Bagian Body & List Fitur --- */
+.card-body {
+    padding: 0 2.5rem 2.5rem;
+    flex-grow: 1; /* Memastikan area fitur mengisi sisa ruang kartu */
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 3rem 0;
+}
+
+.feature-list li {
+    font-size: 1.15rem;
+    color: #e4e4e7;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center; /* Menyelaraskan ikon ceklis dengan teks */
+    gap: 15px;
+    font-weight: 500;
+}
+
+.check-icon {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); /* Sedikit bayangan pada ikon */
+}
+
+
+/* --- TOMBOL KONSULTASI PAKET --- */
+.btn-paket {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    margin-top: auto; /* Jarak dari gambar di atasnya */
+    transition: all 0.3s ease;
+    
+    position: relative;
+    z-index: 20; /* Penting! Supaya tombol ini tetap bisa diklik saat ada kilatan silver yang lewat */
+}
+
+/* Hover Effect Tombol Bronze */
+.btn-bronze {
+    border: 2px solid rgba(181, 107, 62, 0.8);
+    color: #cd7f32; /* Teks warna Bronze */
+}
+.btn-bronze:hover {
+    background-color: #b56b3e; /* Isi background saat hover */
+    color: #ffffff; /* Teks berubah putih */
+    box-shadow: 0 4px 15px rgba(181, 107, 62, 0.4);
+}
+
+/* Hover Effect Tombol Silver */
+.btn-silver {
+    border: 2px solid rgba(209, 213, 219, 0.8);
+    color: #d1d5db;
+}
+.btn-silver:hover {
+    background-color: #d1d5db;
+    color: #000000; /* Teks berubah hitam agar kontras dengan Silver */
+    box-shadow: 0 4px 15px rgba(209, 213, 219, 0.4);
+}
+
+/* Hover Effect Tombol Gold */
+.btn-gold {
+    border: 2px solid rgba(251, 191, 36, 0.8);
+    color: #fbbf24;
+}
+.btn-gold:hover {
+    background-color: #fbbf24;
+    color: #000000; /* Teks berubah hitam agar kontras dengan Emas */
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+}
+
+/* =========================================
+   PRICING NOTES (CATATAN)
+   ========================================= */
+
+.pricing-notes {
+    display: flex;
+    align-items: center; /* Menengahkan ikon dan teks secara vertikal */
+    gap: 2.5rem;
+    margin: 4rem auto 0; /* Memberi jarak dari kartu di atasnya dan menengahkan kotak */
+    max-width: 850px; /* Lebar dibatasi agar proporsional dengan gambar */
+    padding: 2rem 3rem;
+    border-radius: 24px;
+    
+    /* Efek Glassmorphism Tipis & Border Emas */
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(251, 191, 36, 0.4); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.note-icon {
+    flex-shrink: 0;
+    color: var(--accent-yellow); /* Memberikan warna kuning emas pada ikon SVG */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-content h3 {
+    color: var(--accent-yellow);
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.8rem;
+}
+
+.note-content ul {
+    list-style: none; /* Menghapus bullet bawaan browser */
+    padding: 0;
+    margin: 0;
+}
+
+.note-content ul li {
+    color: #e4e4e7; /* Putih sedikit abu agar nyaman dibaca */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* Membuat Custom Bullet Point */
+.note-content ul li::before {
+    content: "•";
+    color: #a1a1aa;
+    font-size: 1.5rem;
+    line-height: 1; /* Mencegah bullet terlalu tinggi dari teks */
+}
+
+/* =========================================
+   TAHAPAN KEMITRAAN SECTION
+   ========================================= */
+.tahapan-section {
+    padding: 5rem 5% 8rem;
+    background-color: var(--bg-dark);
+    position: relative;
+    z-index: 10;
+}
+
+.tahapan-container {
+    max-width: 1200px; 
+    margin: 0 auto;
+    /* TAMBAHAN KUNCI: Memaksa semua anak elemen di dalamnya ke tengah */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* Membungkus seluruh timeline */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    
+    /* TAMBAHAN KUNCI: Lebar box hanya akan selebar teks terpanjangnya */
+    width: fit-content; 
+    max-width: 100%; /* Berjaga-jaga agar tidak luber di HP nantinya */
+}
+
+/* Setiap Baris Tahapan */
+.timeline-item {
+    display: flex;
+    align-items: flex-start; /* Sejajarkan ke atas */
+    gap: 2rem;
+    position: relative;
+    padding-bottom: 3.5rem; /* Memberi ruang (jarak vertikal) antar tahapan */
+}
+
+/* Menghilangkan padding bawah pada item terakhir */
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+/* --- Kolom 1: Angka & Garis (Kiri) --- */
+.step-col-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70px;
+    flex-shrink: 0;
+    /* position: relative; <--- PASTIKAN BARIS INI DIHAPUS */
+}
+
+.step-number {
+    width: 65px;
+    height: 65px;   
+    border-radius: 50%;
+    background-color: var(--bg-dark);
+    border: 2px solid var(--accent-yellow);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    z-index: 2; /* Supaya angka tetap di atas garis */
+    transition: all 0.3s ease;
+}
+
+/* Garis Putus-putus Vertikal */
+.step-line {
+    position: absolute;
+    top: 65px;  /* Memulai garis tepat dari dasar lingkaran angka */
+    bottom: 0;  /* Menarik garis mentok sampai menyentuh tahapan berikutnya */
+    left: 34px; /* Menempatkan posisi garis agar presisi di tengah lingkaran */
+    width: 2px;
+    border-left: 2px dashed rgba(255, 183, 3, 0.4);
+    z-index: 1;
+}
+
+/* Menghapus garis pada item terakhir */
+.timeline-item:last-child .step-line {
+    display: none;
+}
+
+/* --- Kolom 2: Ikon (Tengah) --- */
+.step-col-icon {
+    width: 70px;
+    flex-shrink: 0;
+}
+
+.step-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: rgba(255, 183, 3, 0.1); /* Background kuning glassmorphism */
+    border: 2px solid var(--accent-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-yellow);
+    transition: all 0.3s ease;
+}
+
+/* --- Kolom 3: Teks Konten (Kanan) --- */
+.step-col-content {
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 183, 3, 0.2); /* Garis batas tipis */
+    padding-bottom: 1.5rem;
+    margin-top: 8px; /* Menurunkan teks sedikit agar sejajar tengah dengan ikon */
+}
+
+/* Hilangkan garis batas di tahap terakhir agar lebih bersih */
+.timeline-item:last-child .step-col-content {
+    border-bottom: none;
+}
+
+.step-col-content h3 {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.step-col-content p {
+    color: #a1a1aa;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* --- EFEK HOVER ANIMASI --- */
+.timeline-item:hover .step-number {
+    background-color: var(--accent-yellow);
+    color: var(--bg-dark);
+}
+
+.timeline-item:hover .step-icon {
+    background: rgba(255, 183, 3, 0.2);
+    transform: scale(1.05); /* Ikon sedikit membesar */
+}

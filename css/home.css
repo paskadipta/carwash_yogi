@@ -1,0 +1,681 @@
+/* =========================================
+   GLOBAL & MAIN STYLES (style.css)
+   ========================================= */
+
+:root {
+    --bg-dark: #0a0a0a;
+    --text-light: #f4f4f5;
+    --accent-yellow: #ffb703;
+    --accent-orange: #f58a25; /* Warna orange hangat (Container 2 dst) */
+    
+    /* Variabel Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: blur(16px);
+}
+
+html, body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden; /* Mengunci total pergeseran horizontal */
+    width: 100%;
+    position: relative;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Glowing Orbs */
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+}
+.orb-1 {
+    width: 400px; height: 400px;
+    background: rgba(255, 183, 3, 0.15);
+    top: -100px; left: -100px;
+}
+.orb-2 {
+    width: 500px; height: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    top: 20%; right: -150px;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 5% 0; /* Padding atas mengimbangi tinggi navbar yang fixed */
+    position: relative;
+    z-index: 10;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    gap: 3rem;
+}
+
+/* Kanan: Tipografi */
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+    text-align: right; /* Teks tetap rata kiri, meskipun posisinya berada di kanan layar */
+}
+
+.hero-text h1 {
+    font-size: 4.5rem; /* Ukuran font besar */
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.block-text {
+    display: block;
+}
+
+.hero-text h1 .block-text:last-child {
+    color: var(--text-light); /* Memastikan tulisan CARWASH berwarna putih */
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    color: #a1a1aa;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* Kiri: Logo */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* Mengunci agar logo merapat ke kiri */
+    flex-shrink: 0; /* Mencegah container menyusut */
+    min-width: 450px; /* Sesuaikan dengan lebar logo kamu */
+    min-height: 250px; /* Sesuaikan dengan tinggi logo kamu */
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    width: 450px; 
+    filter: drop-shadow(0 0 30px rgba(255, 183, 3, 0.15)); 
+}
+
+/* --- GLASS BUTTONS --- */
+.button-group {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Mendorong posisi tombol-tombol agar rata kanan */
+}
+
+.btn-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-light);
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-yellow); 
+    color: var(--accent-yellow);
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   CONTAINER 2
+   ========================================= */
+
+/* --- TENTANG KAMI SECTION --- */
+
+.about-section {
+    padding: 8rem 5% 5rem; /* Padding atas ditambahkan agar gradasinya terlihat halus */
+    position: relative;
+    z-index: 10;
+    
+    /* Gradasi hitam dari transparan (Container 1) memudar pekat ke hitam (Container 2) */
+    background: linear-gradient(180deg, #0a0a0a 0%, #ffb703 20%, #ffb703 100%);
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0; /* Padding disesuaikan karena tidak pakai box card lagi */
+}
+
+/* Bagian Atas */
+.about-top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.about-text-area {
+    flex: 1.2;
+    text-align: left; /* Memastikan judul dan teks rata kiri */
+}
+
+.section-heading {
+    margin-bottom: 1.5rem;
+    font-style: italic; 
+    letter-spacing: 2px;
+    display: flex; /* Membuat judul sejajar dalam 1 baris */
+    gap: 15px; /* Jarak antara kata TENTANG dan KAMI */
+    align-items: center;
+}
+
+.section-heading .text-white {
+    color: var(--text-light);
+    font-size: 3.5rem; /* Ukuran disamakan */
+}
+
+.section-heading .text-yellow {
+    color: var(--bg-dark);
+    font-size: 3.5rem; /* Ukuran disamakan */
+}
+
+.about-desc {
+    font-size: 1.1rem;
+    color: #383838;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Penekanan teks kuning di paragraf */
+.about-desc .accent-text {
+    font-weight: 1000;
+    color: var(--bg-dark);
+}
+
+.about-image-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image-area img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 183, 3, 0.15)); 
+}
+
+/* Bagian Bawah (3 Pilar) */
+.about-features {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; 
+    border-top: 1px solid rgba(255, 255, 255, 0.15); 
+    padding-top: 3rem;
+}
+
+.feature-box {
+    flex: 1;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.feature-box img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+}
+
+.feature-box h4 {
+    color: var(--bg-dark);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.feature-box p {
+    font-size: 0.95rem;
+    color: var(--bg-dark);
+    line-height: 1.5;
+}
+
+/* Garis Vertikal Pemisah */
+.feature-divider {
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.15);
+    margin: 0 1.5rem;
+}
+
+/* =========================================
+   CONTAINER 3
+   ========================================= */
+
+/* --- VISI & MISI SECTION --- */
+.visi-misi-section {
+    background: linear-gradient(180deg, #ffb703 0%, #000000 20%, #000000 100%);
+    padding: 8rem 5% 5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.visi-misi-container {
+    max-width: 1100px; /* Sedikit lebih kecil agar fokus ke tengah */
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 3.5rem;
+    color: var(--text-light);
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+.section-title p {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Layout Grid untuk 2 Kartu */
+.vm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+}
+
+/* Styling Kartu Glass */
+.vm-card {
+    padding: 3rem;
+    border-radius: 24px;
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.vm-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-yellow);
+}
+
+/* Ikon di dalam kartu */
+.vm-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 183, 3, 0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.vm-icon img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    /* Tambahkan baris di bawah ini */
+    filter: brightness(0) invert(1); 
+}
+
+.vm-card h3 {
+    font-size: 2rem;
+    color: var(--accent-yellow);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.vm-card p {
+    color: #ffffff;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* Styling Khusus Daftar Misi */
+.mission-list {
+    list-style: none; /* Menghilangkan bullet bawaan */
+}
+
+.mission-list li {
+    color: #d4d4d8;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+/* Custom Bullet Point warna kuning */
+.mission-list li::before {
+    content: "▹"; 
+    color: var(--accent-yellow);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    font-size: 1.5rem;
+}
+
+/* =========================================
+   CONTAINER 4: PROMO SECTION (CTA)
+   ========================================= */
+.promo-section {
+    background-color: #000000; /* Melanjutkan background hitam dari section sebelumnya */
+    padding: 5rem 5% 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.promo-container {
+    width: 100%;
+    max-width: 900px; /* Membatasi lebar card agar proporsional */
+}
+
+/* --- YELLOW GLASSMORPHISM CARD --- */
+.promo-card.glass-yellow {
+    /* Background kuning transparan (15% opacity) */
+    background: rgba(255, 183, 3, 0.15); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 183, 3, 0.4);
+    border-radius: 24px;
+    padding: 4rem 2rem;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(255, 183, 3, 0.1); /* Bayangan memendar kuning */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Tipografi di dalam Card */
+.promo-card h2 {
+    font-size: 2.5rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.promo-card .highlight-text {
+    font-size: 3.8rem;
+    color: var(--accent-yellow);
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-shadow: 0 0 25px rgba(255, 183, 3, 0.4); /* Efek glowing pada teks */
+}
+
+.promo-card p {
+    font-size: 1.15rem;
+    color: #e4e4e7;
+    margin-bottom: 2.5rem;
+}
+
+/* --- STYLING BUTTONS --- */
+.promo-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-solid-yellow {
+    background: var(--accent-yellow);
+    color: var(--bg-dark);
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--accent-yellow);
+}
+
+.btn-solid-yellow:hover {
+    background: transparent;
+    color: var(--accent-yellow);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
+}
+
+.btn-outline-yellow {
+    background: transparent;
+    color: var(--accent-yellow);
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--accent-yellow);
+}
+
+.btn-outline-yellow:hover {
+    background: var(--accent-yellow);
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
+}
+
+/* =========================================
+   EFEK KILATAN SILVER (SHINE) PADA PROMO CARD
+   ========================================= */
+
+.promo-card.glass-yellow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 150%; 
+    width: 150px; 
+    height: 100%;
+    
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.8) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    
+    transform: skewX(35deg); 
+    
+    /* UBAH DURASI MENJADI 6 DETIK (siklus bolak-balik) */
+    animation: kilat-silver 6s infinite ease-in-out; 
+    
+    pointer-events: none; 
+    z-index: 5;
+}
+
+/* Mengatur alur waktu bolak-balik */
+@keyframes kilat-silver {
+    /* FASE 1: Mulai dari Kanan ke Kiri */
+    0% { 
+        left: 150%; 
+    }
+    10% { 
+        left: -100%; /* Kilatan melesat dalam waktu 0.6 detik */
+    }
+    50% { 
+        left: -100%; /* Jeda menunggu sampai detik ke-3 di kiri */
+    }
+    
+    /* FASE 2: Balik dari Kiri ke Kanan */
+    60% { 
+        left: 150%; /* Kilatan melesat balik dalam waktu 0.6 detik */
+    }
+    100% { 
+        left: 150%; /* Jeda menunggu sampai detik ke-6 di kanan (kembali ke awal) */
+    }
+}
+
+/* =========================================
+   MOBILE LAYOUT (Maksimal layar 430px)
+   ========================================= */
+
+@media screen and (max-width: 430px) {
+    /* --- HERO SECTION --- */
+    .hero-section {
+        padding: 120px 5% 0; /* Padding atas disesuaikan untuk navbar mobile */
+    }
+
+    .hero-container {
+        flex-direction: column; /* Menumpuk logo dan teks ke bawah */
+        text-align: center;
+        gap: 2rem;
+    }
+
+    /* Memperbaiki logo yang melebihi batas layar */
+    .hero-image {
+        min-width: unset; /* Menghapus paksaan lebar 450px */
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-image img {
+        width: 100%;
+        max-width: 280px; /* Ukuran aman untuk layar 390px */
+    }
+
+    .hero-text {
+        text-align: center; /* Menengahkan teks */
+    }
+
+    .hero-text h1 {
+        font-size: 2.6rem; /* Ukuran font diperkecil agar tidak tumpah */
+        letter-spacing: 1px;
+    }
+
+    .hero-desc {
+        font-size: 1rem;
+    }
+
+    /* Membuat tombol berjejer ke bawah dan memenuhi lebar layar */
+    .button-group {
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-glass {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* --- TENTANG KAMI SECTION --- */
+    .about-section {
+        padding: 5rem 5% 3rem;
+    }
+
+    .about-top-content {
+        flex-direction: column; /* Teks dan gambar ditumpuk */
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .about-text-area {
+        text-align: center;
+    }
+
+    .section-heading {
+        justify-content: center;
+    }
+
+    .section-heading .text-white,
+    .section-heading .text-yellow {
+        font-size: 2.4rem;
+    }
+
+    .about-image-area img {
+        max-width: 280px;
+    }
+
+    .about-features {
+        flex-direction: column; /* 3 Pilar ditumpuk ke bawah */
+        gap: 2rem;
+        padding-top: 2rem;
+    }
+
+    /* Mengubah garis vertikal menjadi horizontal */
+    .feature-divider {
+        width: 100%;
+        height: 1px;
+        margin: 0.5rem 0;
+    }
+
+    /* --- VISI & MISI SECTION --- */
+    .visi-misi-section {
+        padding: 5rem 5% 3rem;
+    }
+
+    .section-title h2 {
+        font-size: 2.2rem;
+    }
+
+    .vm-grid {
+        /* Mengubah grid agar menjadi 1 kolom penuh, menghapus paksaan 400px */
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+
+    .vm-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .vm-card h3 {
+        font-size: 1.6rem;
+    }
+
+    /* --- PROMO SECTION (CTA) --- */
+    .promo-section {
+        padding: 4rem 5% 5rem;
+    }
+
+    .promo-card.glass-yellow {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .promo-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .promo-card .highlight-text {
+        font-size: 2.6rem;
+    }
+
+    /* Membuat tombol promo berjejer ke bawah */
+    .promo-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-solid-yellow,
+    .btn-outline-yellow {
+        width: 100%;
+        text-align: center;
+    }
+}
