@@ -520,3 +520,375 @@
 .k-item.active .k-icon {
     color: var(--accent-yellow);
 }
+
+/* =========================================
+   SECTION 4: FASILITAS KEMITRAAN
+   ========================================= */
+.fasilitas-section {
+    padding: 2rem 5% 8rem;
+    position: relative;
+    z-index: 10;
+}
+
+.f-container {
+    max-width: 1100px; /* Lebar selaras dengan section 3 */
+    margin: 0 auto;
+}
+
+/* Header Fasilitas */
+.f-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.f-header h2 {
+    font-size: 3rem;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.f-header p {
+    color: #a1a1aa;
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Grid Layout untuk 6 Card */
+.f-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem; /* Jarak lebar antar kiri & kanan untuk heksagon */
+    row-gap: 2.5rem;
+}
+
+/* Style Kartu (Glassmorphism) */
+.f-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Jarak antara ikon dan teks */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 183, 3, 0.4);
+    border-radius: 20px;
+    padding: 1.5rem; /* Padding dibuat rata, tidak perlu 4rem lagi */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.f-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 183, 3, 0.1);
+}
+
+/* Ikon Heksagon Nongol di Kiri */
+.f-icon-hex {
+    position: relative; /* Menghapus absolute */
+    width: 70px;
+    height: 70px;
+    color: var(--accent-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Mencegah ikon gepeng terhimpit teks */
+    z-index: 2;
+}
+
+/* Tipografi Konten di dalam Kartu */
+.f-content h3 {
+    color: var(--text-light); /* Warna putih, mengikuti gambar referensi */
+    font-size: 1.25rem;
+    font-style: italic; /* Dimiringkan seperti di gambar referensi */
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.f-content p {
+    color: #e4e4e7;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* =========================================
+   CARD GARANSI (CENTERED & GOLD GLASS)
+   ========================================= */
+.f-card-garansi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    /* Background Gold Solid + Glassmorphism */
+    background: rgba(255, 183, 3, 0.15); /* Memberikan tint warna emas solid yang transparan */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 183, 3, 0.6); /* Border emas menyala */
+    
+    border-radius: 20px;
+    margin-top: 3rem; /* Jarak dari grid 6 kotak */
+    padding: 2.5rem 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 183, 3, 0.1);
+}
+
+.f-card-garansi:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 183, 3, 0.25);
+}
+
+/* Badge 1 Tahun di Tengah Atas */
+.garansi-badge {
+    background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+    color: #111;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #222;
+    outline: 3px solid #d4af37;
+    margin-bottom: 1.5rem; /* Jarak ke judul */
+    box-shadow: 0 0 20px rgba(255, 183, 3, 0.4);
+}
+
+.garansi-badge span {
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 0.9;
+}
+
+.garansi-badge small {
+    font-size: 0.65rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+/* Wrapper Ikon Kecil dan Judul */
+.garansi-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* Jarak ikon dan judul */
+    margin-bottom: 0.8rem;
+}
+
+.garansi-icon {
+    color: var(--accent-yellow); /* Ikon perisai warna emas */
+    display: flex;
+    align-items: center;
+}
+
+.garansi-title-wrapper h3 {
+    color: var(--text-light); /* Teks judul putih agar kontras */
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Teks Deskripsi */
+.garansi-desc {
+    color: #e4e4e7;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 650px; /* Membatasi lebar teks agar rapi di tengah */
+    margin: 0 auto;
+}
+
+/* =========================================
+   RESPONSIVE MOBILE LAYOUT (MAX 430PX)
+   ========================================= */
+@media (max-width: 430px) {
+    
+    /* GLOBAL PADDING UNTUK SEMUA SECTION */
+    .mengapa-section,
+    .sk-section,
+    .keunggulan-section,
+    .fasilitas-section {
+        padding: 6rem 5% 4rem; /* Padding dikurangi agar tidak terlalu kosong di HP */
+    }
+
+    /* --- SECTION 1: MENGAPA MEMILIH --- */
+    .mengapa-header {
+        flex-direction: column; /* Menumpuk logo dan judul ke bawah */
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .mh-logo img {
+        width: 180px; /* Logo diperkecil */
+    }
+
+    .mh-title {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .est-badge {
+        position: relative;
+        top: 0;
+        margin-bottom: 1rem;
+    }
+
+    .mh-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .mh-title h1 {
+        font-size: 2.2rem;
+    }
+
+    .mengapa-grid {
+        grid-template-columns: 1fr; /* Memaksa kolom menjadi 1 ke bawah */
+        gap: 3rem;
+    }
+
+    .highlight-card {
+        position: static; /* Mematikan efek sticky di HP karena memakan tempat */
+        padding: 2rem 1.2rem;
+    }
+
+    .hc-header h3 {
+        font-size: 2.5rem;
+    }
+
+    .hc-header h4 {
+        font-size: 1.2rem;
+    }
+
+
+    /* --- SECTION 2: SISTEM KERJA SAMA --- */
+    .sk-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .sk-card {
+        padding: 1.2rem 1rem;
+        flex-direction: column; /* Ikon di atas, teks di bawah */
+        text-align: center;
+        gap: 1.2rem;
+    }
+
+    .sk-visual {
+        margin-right: 0;
+        justify-content: center;
+    }
+
+    .sk-hex {
+        width: 60px;
+        height: 60px;
+    }
+
+    .sk-num {
+        height: 40px;
+        font-size: 1.2rem;
+        padding: 0 15px 0 30px;
+        margin-left: -20px;
+    }
+
+    .sk-text h3 {
+        font-size: 1.1rem;
+    }
+
+    .sk-text p {
+        font-size: 0.9rem;
+    }
+
+
+    /* --- SECTION 3: 12 KEUNGGULAN --- */
+    .k-main-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .k-main-header h1 {
+        font-size: 2rem;
+    }
+
+    .k-main-header p {
+        font-size: 0.95rem;
+    }
+
+    .k-column-wrapper {
+        grid-template-columns: 1fr; /* Memaksa 2 kolom menjadi 1 */
+        gap: 0; 
+    }
+
+    .k-col:first-child .k-item:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Mengembalikan garis bawah pemisah antara kolom kiri dan kanan di HP */
+    }
+
+    .k-header h3 {
+        font-size: 1rem;
+    }
+
+    .k-inner {
+        padding-left: 45px; /* Disesuaikan agar teks rata dengan judul di layar sempit */
+    }
+
+
+    /* --- SECTION 4: FASILITAS KEMITRAAN --- */
+    .f-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .f-header p {
+        font-size: 0.95rem;
+    }
+
+    .f-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .f-card {
+        flex-direction: column; /* Menumpuk heksagon dan teks */
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+
+    .f-content h3 {
+        font-size: 1.1rem;
+    }
+
+    /* CARD GARANSI */
+    .f-card-garansi {
+        padding: 2rem 1.2rem;
+        margin-top: 2rem;
+    }
+
+    .garansi-badge {
+        width: 70px;
+        height: 70px;
+    }
+
+    .garansi-badge span {
+        font-size: 1.6rem;
+    }
+
+    .garansi-badge small {
+        font-size: 0.55rem;
+    }
+
+    .garansi-title-wrapper {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .garansi-title-wrapper h3 {
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+
+    .garansi-desc {
+        font-size: 0.95rem;
+    }
+}

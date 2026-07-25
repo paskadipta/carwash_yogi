@@ -148,14 +148,53 @@ kTimeline
 // 3. ANIMASI SCROLL MOTION (PARALLAX EFFECT)
 // ==========================================
 
-// Efek menyeret untuk kolom accordion kiri (Section Mengapa Memilih)
-gsap.to(".left-column", {
-    y: 200, // Jarak piksel elemen akan terseret ke bawah (sesuaikan dengan selera/batas card kanan)
-    ease: "none", // Harus "none" agar pergerakannya sinkron dengan kecepatan scroll
+// Membuat matchMedia GSAP agar animasi hanya aktif di Desktop/Tablet
+let mm = gsap.matchMedia();
+
+mm.add("(min-width: 431px)", () => {
+    
+    // Efek menyeret untuk kolom accordion kiri (Section Mengapa Memilih)
+    gsap.to(".left-column", {
+        y: 200, // Jarak piksel elemen akan terseret ke bawah (sesuaikan dengan selera/batas card kanan)
+        ease: "none", // Harus "none" agar pergerakannya sinkron dengan kecepatan scroll
+        scrollTrigger: {
+            trigger: ".mengapa-grid", // Patokan areanya adalah keseluruhan grid
+            start: "top 60%", // Mulai bergerak saat bagian atas grid mencapai 60% layar
+            end: "bottom 40%", // Berhenti bergerak saat bagian bawah grid mencapai 40% layar
+            scrub: 0.5 // Memberikan efek "smooth catch-up" / delay halus saat scroll bolak-balik
+        }
+    });
+
+});
+
+// --- ANIMASI SECTION 4: FASILITAS KEMITRAAN ---
+const fTimeline = gsap.timeline({
     scrollTrigger: {
-        trigger: ".mengapa-grid", // Patokan areanya adalah keseluruhan grid
-        start: "top 60%", // Mulai bergerak saat bagian atas grid mencapai 60% layar
-        end: "bottom 40%", // Berhenti bergerak saat bagian bawah grid mencapai 40% layar
-        scrub: 0.5 // Angka 1 memberikan efek "smooth catch-up" / delay halus saat scroll bolak-balik
+        trigger: ".fasilitas-section",
+        start: "top 75%",
+        toggleActions: "play none none none"
     }
 });
+
+fTimeline
+    // 1. Header (H2 dan Paragraf) turun dari atas
+    .from(".f-header h2", { y: -30, opacity: 0, duration: 0.6, ease: "power3.out" })
+    .from(".f-header p", { y: -20, opacity: 0, duration: 0.6, ease: "power3.out" }, "-=0.4")
+    
+    // 2. 6 Kartu muncul bergiliran dari bawah (Efek Stagger)
+    .from(".f-card", {
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15, // Delay antar kartu
+        ease: "power2.out",
+        clearProps: "all"
+    }, "-=0.2");
+
+    fTimeline.from(".f-card-garansi", { 
+        y: 50, 
+        opacity: 0, 
+        duration: 0.6, 
+        ease: "power2.out", 
+        clearProps: "all" 
+    }, "-=0.2");
